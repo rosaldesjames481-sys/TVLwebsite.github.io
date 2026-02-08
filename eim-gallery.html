@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EIM (Electrical Installation & Maintenance) | ANCHS TVL Strand</title>
+  <meta name="description" content="Explore the skills and projects of ANCHS TVL EIM students." />
+  <link rel="icon" type="image/png" href="images/logo.png" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* HERO */
+    .about-hero {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #fff;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s;
+      z-index: 999;
+    }
+
+    .lightbox.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .slider {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      max-width: 90%;
+      text-align: center;
+    }
+
+    #lightbox-img {
+      display: block;
+      margin: 0 auto;
+      max-width: 90%;
+      max-height: 75vh;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+    }
+
+    .caption {
+      color: #f1f5f9;
+      margin-top: 14px;
+    }
+
+    .caption h3 {
+      color: #38bdf8;
+      margin-bottom: 6px;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 28px;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="about-hero" style="background:url('images/headerdesign.jpg') center/cover no-repeat;">
+  <h1>EIM (Electrical Installation & Maintenance)</h1>
+  <p>Showcasing the technical expertise and hands-on craftsmanship of our EIM students.</p>
+</section>
+
+<!-- GALLERY -->
+<main class="container">
+  <section class="specializations-grid">
+
+    <!-- WIRING INSTALLATION -->
+    <article class="card"
+      data-title="Wiring Installation"
+      data-image="images/eim/eim1.jpg"
+      data-caption="Students demonstrating proper electrical wiring techniques in a simulated environment.">
+      <img src="images/eim/eim1.jpg" alt="Wiring Installation">
+      <div class="card-content">
+        <h3>Wiring Installation</h3>
+        <p>Students demonstrating proper electrical wiring techniques in a simulated environment.</p>
+      </div>
+    </article>
+
+    <!-- LIGHTING SYSTEMS SETUP -->
+    <article class="card"
+      data-title="Lighting Systems Setup"
+      data-image="images/eim/eim2.jpg"
+      data-caption="Hands-on learning in installing and testing residential lighting systems.">
+      <img src="images/eim/eim2.jpg" alt="Lighting Systems Setup">
+      <div class="card-content">
+        <h3>Lighting Systems Setup</h3>
+        <p>Hands-on learning in installing and testing various lighting systems for residential use.</p>
+      </div>
+    </article>
+
+  </section>
+
+  <div style="text-align:center; margin:30px;">
+    <a href="index.html" class="btn-primary">← Back to Specializations</a>
+  </div>
+</main>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox">
+  <span class="close">&times;</span>
+  <div class="slider">
+    <img id="lightbox-img" src="" alt="">
+    <div class="caption">
+      <h3 id="lightbox-title"></h3>
+      <p id="lightbox-caption"></p>
+    </div>
+  </div>
+</div>
+
+<!-- SCRIPT -->
+<script>
+  const lightbox = document.getElementById("lightbox");
+  const img = document.getElementById("lightbox-img");
+  const title = document.getElementById("lightbox-title");
+  const caption = document.getElementById("lightbox-caption");
+
+  document.querySelectorAll(".card").forEach(card => {
+    card.onclick = () => {
+      img.src = card.dataset.image;
+      title.textContent = card.dataset.title;
+      caption.textContent = card.dataset.caption;
+      lightbox.classList.add("show");
+    };
+  });
+
+  document.querySelector(".close").onclick = () => {
+    lightbox.classList.remove("show");
+  };
+
+  lightbox.onclick = e => {
+    if (e.target === lightbox) lightbox.classList.remove("show");
+  };
+</script>
+
+</body>
+</html>

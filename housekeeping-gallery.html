@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Housekeeping | ANCHS TVL Strand</title>
+
+  <meta name="description" content="Explore Housekeeping student outputs focused on proper bed making, towel art, and room presentation skills." />
+  <link rel="icon" type="image/png" href="images/logo.png" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* ==== LIGHTBOX ==== */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s;
+      z-index: 999;
+    }
+    .lightbox.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    .slider {
+      max-width: 90%;
+      text-align: center;
+    }
+    .slider img {
+      max-height: 70vh;
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+    }
+    .caption {
+      color: #f1f5f9;
+      margin-top: 14px;
+    }
+    .caption h3 {
+      color: #38bdf8;
+      margin-bottom: 6px;
+    }
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 28px;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <section class="about-hero" style="background:url('images/headerdesign.jpg') center/cover no-repeat;">
+    <div class="hero-box">
+      <h1>Housekeeping Specialization</h1>
+      <p>Demonstrating proper bed making, towel art, and room presentation skills.</p>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <main class="container">
+    <section class="specializations-grid">
+
+      <!-- BED MAKING WITH TOWEL ART -->
+      <article class="card"
+        data-title="Bed Making with Towel Art / Bed Decoration"
+        data-images='[
+          {
+            "src":"images/housekeeping/housekeeping1.jpg",
+            "cap":"This output shows proper bed making with towel art and simple decoration, highlighting students’ skills in cleanliness, organization, and room presentation."
+          }
+        ]'>
+        <img src="images/housekeeping/housekeeping1.jpg" alt="Bed Making with Towel Art">
+        <div class="card-content">
+          <h3>Bed Making with Towel Art / Bed Decoration</h3>
+          <p>
+            This output shows proper bed making with towel art and simple decoration,
+            highlighting students’ skills in cleanliness, organization, and room presentation.
+          </p>
+        </div>
+      </article>
+
+    </section>
+
+    <div style="text-align:center; margin:30px;">
+      <a href="index.html" class="btn-primary">← Back to Specializations</a>
+    </div>
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <div class="slider">
+      <img id="slider-img" src="" alt="">
+      <div class="caption">
+        <h3 id="slider-title"></h3>
+        <p id="slider-caption"></p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- SCRIPT -->
+  <script>
+    let images = [];
+    let current = 0;
+
+    const lightbox = document.getElementById("lightbox");
+    const sliderImg = document.getElementById("slider-img");
+    const sliderTitle = document.getElementById("slider-title");
+    const sliderCaption = document.getElementById("slider-caption");
+
+    document.querySelectorAll(".card").forEach(card => {
+      card.onclick = () => {
+        images = JSON.parse(card.dataset.images);
+        current = 0;
+        sliderImg.src = images[current].src;
+        sliderTitle.textContent = card.dataset.title;
+        sliderCaption.textContent = images[current].cap;
+        lightbox.classList.add("show");
+      };
+    });
+
+    document.querySelector(".close").onclick = () =>
+      lightbox.classList.remove("show");
+
+    lightbox.onclick = e => {
+      if (e.target === lightbox) lightbox.classList.remove("show");
+    };
+  </script>
+
+</body>
+</html>

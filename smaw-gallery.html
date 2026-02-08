@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SMAW (Shielded Metal Arc Welding) | ANCHS TVL Strand</title>
+
+  <meta name="description" content="Showcasing SMAW student outputs that demonstrate welding skills, safety, and workmanship." />
+  <link rel="icon" type="image/png" href="images/logo.png" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* ==== HERO ==== */
+    .about-hero {
+      background: linear-gradient(135deg, #111827, #1f2937);
+      color: #fff;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    /* ==== LIGHTBOX ==== */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s;
+      z-index: 999;
+    }
+    .lightbox.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    .slider img {
+      max-height: 70vh;
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+    }
+    .caption {
+      color: #f1f5f9;
+      margin-top: 14px;
+      text-align: center;
+    }
+    .caption h3 {
+      color: #38bdf8;
+      margin-bottom: 6px;
+    }
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 28px;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <section class="about-hero" style="background: url('images/headerdesign.jpg') center/cover no-repeat;">
+    <div class="hero-box">
+      <h1>SMAW (Shielded Metal Arc Welding)</h1>
+      <p>Student outputs highlighting basic welding skills and proper metal joining techniques.</p>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <main class="container">
+    <section class="specializations-grid">
+
+      <!-- BASIC WELDING BEADS -->
+      <article class="card"
+        data-title="Basic Welding Beads"
+        data-image="images/smaw/smaw1.jpg"
+        data-caption="Practice output showing straight and consistent welding beads">
+        <img src="images/smaw/smaw1.jpg" alt="Basic Welding Beads">
+        <div class="card-content">
+          <h3>Basic Welding Beads</h3>
+          <p>
+            This output demonstrates students’ ability to perform basic welding beads,
+            focusing on control, consistency, and proper handling of welding equipment.
+          </p>
+        </div>
+      </article>
+
+      <!-- METAL JOINT FABRICATION -->
+      <article class="card"
+        data-title="Metal Joint Fabrication"
+        data-image="images/smaw/joint1.jpg"
+        data-caption="Welded metal joint demonstrating proper alignment and strength">
+        <img src="images/smaw/joint1.jpg" alt="Metal Joint Fabrication">
+        <div class="card-content">
+          <h3>Metal Joint Fabrication</h3>
+          <p>
+            This project showcases the correct joining of metal components,
+            emphasizing accuracy, safety procedures, and weld strength.
+          </p>
+        </div>
+      </article>
+
+    </section>
+
+    <div style="text-align:center; margin:30px;">
+      <a href="index.html" class="btn-primary">← Back to Specializations</a>
+    </div>
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <div class="slider">
+      <img id="slider-img" src="" alt="">
+      <div class="caption">
+        <h3 id="slider-title"></h3>
+        <p id="slider-caption"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    const lightbox = document.getElementById("lightbox");
+    const sliderImg = document.getElementById("slider-img");
+    const sliderTitle = document.getElementById("slider-title");
+    const sliderCaption = document.getElementById("slider-caption");
+
+    document.querySelectorAll(".card").forEach(card => {
+      card.onclick = () => {
+        sliderImg.src = card.dataset.image;
+        sliderTitle.textContent = card.dataset.title;
+        sliderCaption.textContent = card.dataset.caption;
+        lightbox.classList.add("show");
+      };
+    });
+
+    document.querySelector(".close").onclick = () =>
+      lightbox.classList.remove("show");
+
+    lightbox.onclick = e => {
+      if (e.target === lightbox) lightbox.classList.remove("show");
+    };
+  </script>
+
+</body>
+</html>

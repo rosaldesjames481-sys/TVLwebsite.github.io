@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Computer System Servicing | ANCHS TVL Strand</title>
+
+  <meta name="description" content="Explore Computer System Servicing student outputs — PC assembly, repair, and configuration projects." />
+  <link rel="icon" type="image/png" href="images/logo.png" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* ==== LIGHTBOX SLIDER (MATCH ICT) ==== */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s;
+      z-index: 999;
+    }
+    .lightbox.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    .slider {
+      position: relative;
+      max-width: 90%;
+      text-align: center;
+    }
+    .slider img {
+      max-height: 70vh;
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+    }
+    .caption {
+      color: #f1f5f9;
+      margin-top: 14px;
+    }
+    .caption h3 {
+      color: #38bdf8;
+      margin-bottom: 6px;
+    }
+
+    /* ==== ARROWS ==== */
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2.5rem;
+      color: #fff;
+      cursor: pointer;
+      padding: 10px;
+      user-select: none;
+    }
+    .arrow:hover { color: #38bdf8; }
+    .arrow.left { left: -60px; }
+    .arrow.right { right: -60px; }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 28px;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    @media(max-width:768px){
+      .arrow.left { left: 0; }
+      .arrow.right { right: 0; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <section class="about-hero" style="background: url('images/headerdesign.jpg') center/cover no-repeat;">
+    <div class="hero-box">
+      <h1>Computer System Servicing (CSS)</h1>
+      <p>Showcasing the technical skills and hands-on projects of our CSS students.</p>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <main class="container">
+    <section class="specializations-grid">
+
+      <!-- SYSTEM UNIT ASSEMBLY -->
+      <article class="card"
+        data-title="System Unit Assembly"
+        data-images='[
+          {"src":"images/css/css1.jpg","cap":"Assemble System Unit"},
+          {"src":"images/css/css2.jpg","cap":"Disassemble System Unit"}
+        ]'>
+        <img src="images/css/css1.jpg" alt="System Unit Assembly">
+        <div class="card-content">
+          <h3>System Unit Assembly</h3>
+          <p>Students practice assembling and disassembling a desktop system unit to understand proper hardware handling and configuration.</p>
+        </div>
+      </article>
+
+      <!-- NETWORK CABLING -->
+      <article class="card"
+        data-title="Network Cabling Project"
+        data-images='[
+          {"src":"images/css/network1.jpg","cap":"LAN cable preparation"},
+          {"src":"images/css/network2.jpg","cap":"Crimping and testing cables"}
+        ]'>
+        <img src="images/css/network1.jpg" alt="Network Cabling">
+        <div class="card-content">
+          <h3>Network Cabling Project</h3>
+          <p>Hands-on LAN setup and structured cabling.</p>
+        </div>
+      </article>
+
+    </section>
+
+    <div style="text-align:center; margin:30px;">
+      <a href="index.html" class="btn-primary">← Back to Specializations</a>
+    </div>
+  </main>
+
+  <!-- LIGHTBOX SLIDER -->
+  <div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+
+    <div class="slider">
+      <span class="arrow left">&#10094;</span>
+      <img id="slider-img" src="" alt="">
+      <span class="arrow right">&#10095;</span>
+
+      <div class="caption">
+        <h3 id="slider-title"></h3>
+        <p id="slider-caption"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>&copy; 2025 ANCHS TVL Strand — Computer System Servicing Gallery</p>
+    <p>Designed by <strong>TVL ICT Students</strong></p>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    let images = [];
+    let current = 0;
+
+    const lightbox = document.getElementById("lightbox");
+    const sliderImg = document.getElementById("slider-img");
+    const sliderTitle = document.getElementById("slider-title");
+    const sliderCaption = document.getElementById("slider-caption");
+
+    document.querySelectorAll(".card").forEach(card => {
+      card.onclick = () => {
+        images = JSON.parse(card.dataset.images);
+        current = 0;
+        sliderImg.src = images[current].src;
+        sliderTitle.textContent = card.dataset.title;
+        sliderCaption.textContent = images[current].cap;
+        lightbox.classList.add("show");
+      };
+    });
+
+    document.querySelector(".arrow.left").onclick = () => {
+      current = (current - 1 + images.length) % images.length;
+      updateSlide();
+    };
+
+    document.querySelector(".arrow.right").onclick = () => {
+      current = (current + 1) % images.length;
+      updateSlide();
+    };
+
+    function updateSlide(){
+      sliderImg.src = images[current].src;
+      sliderCaption.textContent = images[current].cap;
+    }
+
+    document.querySelector(".close").onclick = () => lightbox.classList.remove("show");
+    lightbox.onclick = e => {
+      if(e.target === lightbox) lightbox.classList.remove("show");
+    };
+  </script>
+
+</body>
+</html>

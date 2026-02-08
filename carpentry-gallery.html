@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Carpentry | ANCHS TVL Strand</title>
+  <meta name="description" content="Showcasing the practical carpentry skills of students through scaffolding and formworks projects." />
+  <link rel="icon" type="image/png" href="images/logo.png" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* ==== HERO ==== */
+    .about-hero {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #fff;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    /* ==== LIGHTBOX ==== */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s;
+      z-index: 999;
+    }
+    .lightbox.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    .slider img {
+      max-height: 70vh;
+      border-radius: 12px;
+    }
+    .caption {
+      color: #f1f5f9;
+      margin-top: 14px;
+      text-align: center;
+    }
+    .caption h3 {
+      color: #38bdf8;
+      margin-bottom: 6px;
+    }
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 28px;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <section class="about-hero" style="background: url('images/headerdesign.jpg') center/cover no-repeat;">
+    <div class="hero-box">
+      <h1>Carpentry</h1>
+      <p>Featuring hands-on carpentry outputs that demonstrate construction skills and safety practices.</p>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <main class="container">
+    <section class="specializations-grid">
+
+      <!-- SCAFFOLDING -->
+      <article class="card"
+        data-title="Scaffolding"
+        data-images='[
+          {"src":"images/carpentry/carpentry1.jpg","cap":"Properly assembled scaffolding used for construction activities"}
+        ]'>
+        <img src="images/carpentry/carpentry1.jpg" alt="Scaffolding Project">
+        <div class="card-content">
+          <h3>Scaffolding</h3>
+          <p>
+            This project demonstrates the correct assembly of scaffolding structures,
+            emphasizing safety standards, stability, and proper material use in construction work.
+          </p>
+        </div>
+      </article>
+
+      <!-- FORMWORKS -->
+      <article class="card"
+        data-title="Formworks"
+        data-images='[
+          {"src":"images/carpentry/carpentry2.jpg","cap":"Completed formworks used for concrete shaping"}
+        ]'>
+        <img src="images/carpentry/carpentry2.jpg" alt="Formworks Project">
+        <div class="card-content">
+          <h3>Formworks</h3>
+          <p>
+            This output showcases the construction of formworks used in shaping concrete,
+            highlighting accuracy, measurement skills, and teamwork in carpentry tasks.
+          </p>
+        </div>
+      </article>
+
+    </section>
+
+    <div style="text-align:center; margin:30px;">
+      <a href="index.html" class="btn-primary">← Back to Specializations</a>
+    </div>
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <div class="slider">
+      <img id="slider-img" src="" alt="">
+      <div class="caption">
+        <h3 id="slider-title"></h3>
+        <p id="slider-caption"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    let images = [];
+    let current = 0;
+
+    const lightbox = document.getElementById("lightbox");
+    const sliderImg = document.getElementById("slider-img");
+    const sliderTitle = document.getElementById("slider-title");
+    const sliderCaption = document.getElementById("slider-caption");
+
+    document.querySelectorAll(".card").forEach(card => {
+      card.onclick = () => {
+        images = JSON.parse(card.dataset.images);
+        current = 0;
+        sliderImg.src = images[0].src;
+        sliderTitle.textContent = card.dataset.title;
+        sliderCaption.textContent = images[0].cap;
+        lightbox.classList.add("show");
+      };
+    });
+
+    document.querySelector(".close").onclick = () => lightbox.classList.remove("show");
+    lightbox.onclick = e => {
+      if (e.target === lightbox) lightbox.classList.remove("show");
+    };
+  </script>
+
+</body>
+</html>

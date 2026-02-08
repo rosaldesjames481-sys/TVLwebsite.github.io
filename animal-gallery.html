@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Animal Production | ANCHS TVL Strand</title>
+  <meta name="description" content="Showcasing the agricultural and livestock projects of ANCHS TVL Animal Production students — care, management, and sustainable animal care." />
+  <link rel="icon" type="image/png" href="images/logo.png" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* ==== HERO ==== */
+    .about-hero {
+      background: linear-gradient(135deg, #0f172a, #1e293b), url('images/headerdesign.jpg') center/cover no-repeat;
+      color: #fff;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    /* ==== LIGHTBOX SLIDER ==== */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s;
+      z-index: 999;
+    }
+    .lightbox.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    .slider {
+      position: relative;
+      max-width: 90%;
+      text-align: center;
+    }
+    .slider img {
+      max-height: 70vh;
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+    }
+    .caption {
+      color: #f1f5f9;
+      margin-top: 14px;
+    }
+    .caption h3 {
+      color: #38bdf8;
+      margin-bottom: 6px;
+    }
+
+    /* ==== ARROWS ==== */
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2.5rem;
+      color: #fff;
+      cursor: pointer;
+      padding: 10px;
+      user-select: none;
+    }
+    .arrow:hover { color: #38bdf8; }
+    .arrow.left { left: -60px; }
+    .arrow.right { right: -60px; }
+
+    /* ==== CLOSE ==== */
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 28px;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    @media(max-width:768px){
+      .arrow.left { left: 0; }
+      .arrow.right { right: 0; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <section class="about-hero" style="background: url('images/headerdesign.jpg') center/cover no-repeat;">
+    <div class="hero-box">
+      <h1>Animal Production</h1>
+      <p>Celebrating the hard work of our Animal Production students in livestock raising, feed preparation, and sustainable animal care.</p>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <main class="container">
+    <section class="specializations-grid">
+
+         <!-- POULTRY BROODING -->
+      <article class="card"
+        data-title="Poultry Management"
+        data-images='[
+          {"src":"images/animal/animal1.jpg","cap":"Students raising healthy poultry"},
+          {"src":"images/animal/animal2.jpg","cap":"Feeding and coop maintenance"},
+          {"src":"images/animal/animal3.jpg","cap":"Drinking water and heat lamp management"}
+        ]'>
+        <img src="images/animal/animal1.jpg" alt="Poultry Brooding">
+        <div class="card-content">
+          <h3>Poultry Brooding</h3>
+          <p>Students practicing poultry brooding using heat lamps, feeding, and providing water to maintain healthy chicks.</p>
+        </div>
+      </article>
+
+      <!-- POULTRY HARVESTING AND DRESSING -->
+      <article class="card"
+        data-title="Poultry Harvesting and Dressing"
+        data-images='[
+          {"src":"images/animal/animal5.jpg","cap":"Dressing chickens"},
+          {"src":"images/animal/animal6.jpg","cap":"Weighing chickens using the scale"},
+          {"src":"images/animal/animal7.jpg","cap":"Final processing: cutting and cleaning all chickens"}
+        ]'>
+        <img src="images/animal/animal4.jpg" alt="Poultry Harvesting and Dressing">
+        <div class="card-content">
+          <h3>Swine Production</h3>
+          <p>Learners perform proper poultry harvesting and dressing, including weighing, cutting, and cleaning the chickens while observing safety and hygiene standards.</p>
+        </div>
+      </article>
+
+    </section>
+
+    <div style="text-align:center; margin:30px;">
+      <a href="index.html" class="btn-primary">← Back to Specializations</a>
+    </div>
+  </main>
+
+  <!-- LIGHTBOX SLIDER -->
+  <div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+
+    <div class="slider">
+      <span class="arrow left">&#10094;</span>
+      <img id="slider-img" src="" alt="">
+      <span class="arrow right">&#10095;</span>
+
+      <div class="caption">
+        <h3 id="slider-title"></h3>
+        <p id="slider-caption"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    let images = [];
+    let current = 0;
+
+    const lightbox = document.getElementById("lightbox");
+    const sliderImg = document.getElementById("slider-img");
+    const sliderTitle = document.getElementById("slider-title");
+    const sliderCaption = document.getElementById("slider-caption");
+
+    document.querySelectorAll(".card").forEach(card => {
+      card.onclick = () => {
+        images = JSON.parse(card.dataset.images);
+        current = 0;
+        sliderImg.src = images[current].src;
+        sliderTitle.textContent = card.dataset.title;
+        sliderCaption.textContent = images[current].cap;
+        lightbox.classList.add("show");
+      };
+    });
+
+    document.querySelector(".arrow.left").onclick = () => {
+      current = (current - 1 + images.length) % images.length;
+      updateSlide();
+    };
+
+    document.querySelector(".arrow.right").onclick = () => {
+      current = (current + 1) % images.length;
+      updateSlide();
+    };
+
+    function updateSlide(){
+      sliderImg.src = images[current].src;
+      sliderCaption.textContent = images[current].cap;
+    }
+
+    document.querySelector(".close").onclick = () => lightbox.classList.remove("show");
+    lightbox.onclick = e => {
+      if(e.target === lightbox) lightbox.classList.remove("show");
+    };
+  </script>
+
+</body>
+</html>

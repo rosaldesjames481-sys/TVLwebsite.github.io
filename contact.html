@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact – ANCHS TVL Student Output Showcase</title>
+  <link rel="icon" href="images/logo.png" />
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/script.js"></script>
+
+  <style>
+    /* Contact form styling */
+    .contact-section {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      padding: 30px 0;
+    }
+
+    .contact-card {
+      background: #f3f4f6;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+
+    .contact-card h3 {
+      margin-bottom: 15px;
+      color: var(--accent);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      width: 100%;
+      resize: vertical;
+    }
+
+    .contact-form button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      background: #4f46e5;
+    }
+
+    .file-note {
+      font-size: 0.85rem;
+      color: #555;
+      margin-top: -5px;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <nav class="nav container">
+    <div class="nav-left">
+      <img src="images/logo.png" class="school-logo" alt="ANCHS Logo">
+      <h1 class="site-title">Alimodian National Comprehensive High School</h1>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero about-hero">
+  <div class="hero-box">
+    <h1>Contact Information</h1>
+    <p>
+      For inquiries, coordination, and official communication regarding the
+      ANCHS TVL Student Output Showcase, please refer to the details below.
+    </p>
+  </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<main class="container contact-section">
+
+  <!-- CONTACT DETAILS -->
+  <div class="contact-card">
+    <h3>Official Contact Details</h3>
+    <p><strong>School:</strong> Alimodian National Comprehensive High School</p>
+
+    <p><strong>Email:</strong>
+      <a href="mailto:tvl12ict@gmail.com">
+        tvl12ict@gmail.com
+      </a>
+    </p>
+
+    <p>
+      <strong>Official Facebook Page:</strong>
+      <a href="https://www.facebook.com/share/17oXPqGx5W/?mibextid=wwXIfr" target="_blank">
+        TVL 12 ICT
+      </a>
+    </p>
+  </div>
+
+  <!-- MESSAGE FORM -->
+  <div class="contact-card">
+    <h3>Message Form</h3>
+
+    <p style="margin-bottom:10px;">
+      You may send your inquiries, feedback, or official concerns using the form below.
+    </p>
+
+    <form class="contact-form"
+          action="mailto:tvl12ict@gmail.com"
+          method="post"
+          enctype="multipart/form-data">
+
+      <input type="text" name="name" placeholder="Full Name" required>
+
+      <input type="email" name="email" placeholder="Email Address" required>
+
+      <input type="text" name="subject" placeholder="Subject" required>
+
+      <!-- FILE / PHOTO UPLOAD -->
+      <input type="file"
+             name="attachment"
+             accept="image/*,.pdf,.doc,.docx">
+
+      <small class="file-note">
+        Accepted files: Images, PDF, Word Documents
+      </small>
+
+      <textarea name="message"
+                rows="6"
+                placeholder="Message"
+                required></textarea>
+
+      <button type="submit">Send Message</button>
+
+    </form>
+
+    <p style="margin-top:10px; font-size:0.9rem; color:#555;">
+      Upon clicking “Send Message,” your default email application will open
+      to transmit your message directly.
+    </p>
+
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>© 2025 Alimodian National Comprehensive High School – TVL Strand</p>
+  <p>Student Output Showcase</p>
+</footer>
+
+</body>
+</html>
