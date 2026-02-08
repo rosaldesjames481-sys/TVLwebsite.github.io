@@ -694,3 +694,164 @@ body.dark-mode li {
     gap: 18px;
   }
 }
+/* ================= PHONE VERSION (MOBILE ONLY) ================= */
+@media (max-width: 480px) {
+
+  /* GENERAL */
+  body {
+    font-size: 14px;
+  }
+
+  main {
+    padding: 24px 14px;
+  }
+
+  .container {
+    padding: 0 14px;
+  }
+
+  /* HEADER / NAV */
+  .nav {
+    flex-wrap: wrap;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    right: 5%;
+    width: 90%;
+    background: var(--bg-white);
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    border-radius: 14px;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+
+    /* hidden by default */
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+
+  .nav-links.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .nav-links a {
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+    color: var(--text-main);
+  }
+
+  /* HERO */
+  .hero,
+  .about-hero,
+  .page-hero {
+    padding: 60px 14px 40px;
+  }
+
+  .hero-box h1,
+  .hero-text h1 {
+    font-size: 1.7rem;
+  }
+
+  .hero-box p,
+  .hero-text p {
+    font-size: 0.95rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn-primary,
+  .btn-primary-outline {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* SECTIONS */
+  section h2 {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  section h3 {
+    font-size: 1.15rem;
+    text-align: center;
+  }
+
+  section p,
+  section li {
+    font-size: 0.95rem;
+    text-align: justify;
+  }
+
+  /* ABOUT / CONTACT BOXES */
+  .about-section,
+  .contact-section {
+    padding: 20px 18px;
+  }
+
+  /* SEARCH */
+  .search-container {
+    max-width: 100%;
+    margin: 20px 0;
+  }
+
+  /* OUTPUTS / CARDS / GALLERY */
+  .outputs {
+    margin: 30px auto;
+  }
+
+  .outputs-grid,
+  .specializations-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .output-card img,
+  .card img {
+    height: 160px;
+  }
+
+  .output-card p,
+  .card-content p {
+    font-size: 0.9rem;
+  }
+
+  /* LIGHTBOX */
+  .lightbox-content {
+    padding: 16px;
+  }
+
+  .lightbox-img {
+    max-height: 50vh;
+  }
+
+  .lightbox-caption h3 {
+    font-size: 1.2rem;
+  }
+
+  .lightbox-caption p {
+    font-size: 0.9rem;
+  }
+
+  .close {
+    font-size: 2rem;
+    top: 14px;
+    right: 18px;
+  }
+
+  /* FOOTER */
+  .footer {
+    font-size: 0.85rem;
+    padding: 14px;
+  }
+}
